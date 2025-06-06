@@ -1,0 +1,73 @@
+server:
+  port: 9081
+  servlet:
+    context-path: /store-service
+spring:
+  application:
+    name: store-service
+  cloud:
+    #    nacos:
+    #      username: nacos
+    #      password: nacos
+    #      discovery:
+    #        namespace: f21e4506-09df-4d8e-8cfb-d696108262a1
+    #        group: DEFAULT_GROUP
+    #        server-addr: localhost:8848
+    #      config:
+    #        # 配置所属命名空间的id，我们配置名称为dev的id，在命名空间列表查看id的值
+    #        namespace: fdf94e5a-fd74-43d7-a22f-2afe9bd3e871
+    #        # 文件名，如果没有配置则默认为 ${spring.application.name}
+    #        prefix: springboot3-nacos
+    #        # 配置所属分组
+    #        group: DEFAULT_GROUP
+    #        # 后缀名，只支持 properties 和 yaml 类型
+    #        file-extension: yaml
+    #        # nacos服务器地址
+    #        server-addr: localhost:8848
+    #        # 配置自动刷新
+    #        refresh-enabled: true
+    #        # 启用远程同步配置
+    #        enable-remote-sync-config: true
+    compatibility-verifier:
+      enabled: false
+  sleuth:
+    enabled: true
+    traceId128: true
+    supportsJoin: false
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    sender:
+      type: web
+    sleuth:
+      sampler:
+        probability: 1.0
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/t_account
+    username: root
+    password: 123456
+    hikari:
+      pool-name: account-hikari-mariadb
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 180000
+      max-lifetime: 180000
+      auto-commit: true
+      connection-timeout: 300000
+      connection-test-query: SELECT 1
+  mybatis:
+    mapper-locations: classpath:mapper/*Mapper.xml
+    configuration:
+      map-underscore-to-camel-case: true
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: 19171567
+      client-name: lettuce
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://127.0.0.1:8761/eureka
+
+
