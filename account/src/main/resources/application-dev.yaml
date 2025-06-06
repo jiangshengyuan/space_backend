@@ -1,10 +1,10 @@
 server:
   port: 9080
   servlet:
-    context-path: /account-service
+    context-path: /space-account
 spring:
   application:
-    name: account-service
+    name: space-account
   cloud:
     #    nacos:
     #      username: nacos
